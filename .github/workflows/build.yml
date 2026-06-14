@@ -16,10 +16,12 @@ jobs:
         run: pip install ufbt
 
       - name: Build FAP
-        run: ufbt
+        run: |
+          cd TagTinker-main 2>/dev/null || true
+          ufbt
 
       - name: Upload FAP
         uses: actions/upload-artifact@v4
         with:
           name: tagtinker.fap
-          path: dist/*.fap
+          path: "**/*.fap"
